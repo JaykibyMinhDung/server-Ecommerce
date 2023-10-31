@@ -9,7 +9,7 @@ const multer = require("multer");
 var cors = require("cors");
 
 const app = express();
-const url = `mongodb://127.0.0.1:27017/Assignment3`;
+const url = process.env.MONGODB_URI;
 
 const authRoutes = require("./routes/user/auth");
 const productRoutes = require("./routes/user/products");
