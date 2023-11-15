@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   // const token = authHeader.split(" ")[1];
   // const nameToken = req.headers?.cookie.split(";")[1];
   const nameToken = req.headers?.cookie;
-  if (!namToken) {
+  if (!nameToken) {
     throw Error;
   }
   // console.log(nameToken);
