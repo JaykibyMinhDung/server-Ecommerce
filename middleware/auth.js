@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   // const nameToken = req.headers?.cookie.split(";")[1];
   const nameToken = req.headers?.cookie;
   if (!namToken) {
-    return res.json(nameToken)
+    throw new Error();
   }
   // console.log(nameToken);
   const [name, value] = nameToken.split("=");
