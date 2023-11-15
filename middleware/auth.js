@@ -7,6 +7,9 @@ module.exports = (req, res, next) => {
   // const token = authHeader.split(" ")[1];
   // const nameToken = req.headers?.cookie.split(";")[1];
   const nameToken = req.headers?.cookie;
+  if (namToken) {
+    return res.json(nameToken)
+  }
   // console.log(nameToken);
   const [name, value] = nameToken.split("=");
   // || !authHeader
@@ -21,6 +24,7 @@ module.exports = (req, res, next) => {
       throw Error;
     }
     req.userId = data.id;
+    
     next();
   } catch {
     return res
