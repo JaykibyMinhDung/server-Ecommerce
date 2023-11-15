@@ -82,12 +82,13 @@ exports.login = (req, res, next) => {
       );
     })
     .catch(() => {
-      res.json({
-        meta: {
-          message: "Đăng nhập thất bại",
-          statusCode: 0,
-        },
-      });
+      // res.json({
+      //   meta: {
+      //     message: "Đăng nhập thất bại",
+      //     statusCode: 0,
+      //   },
+      // });
+      console.log(err);
     });
 };
 
