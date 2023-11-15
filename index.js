@@ -94,7 +94,7 @@ app.use(chatRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
-  res.status(500).json({ message: "Server error", SatusCode: 500 });
+  res.status(500).json({ message: error, SatusCode: 500 });
 });
 // SET NODE_ENV=development
 
