@@ -18,6 +18,7 @@ const chatRoutes = require("./routes/chat/chat");
 const adminRoutesAuth = require("./routes/admin/auth");
 const adminRoutesOrder = require("./routes/admin/history");
 const adminRoutesManagers = require("./routes/admin/managers");
+const adminRouteChat = require("./routes/chat/chat_admin");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -87,6 +88,7 @@ app.use(
 app.use(adminRoutesAuth);
 app.use(adminRoutesOrder);
 app.use(adminRoutesManagers);
+app.use(adminRouteChat);
 
 app.use(authRoutes);
 app.use(productRoutes);
