@@ -61,7 +61,7 @@ exports.login = (req, res, next) => {
           .cookie("client_token", token, {
             maxAge: 86400 * 1000,
             httpOnly: true, // Chặn đọc cookie bên client
-            sameSite: 'None',
+            // sameSite: 'None',
             secure: true,
           })
           .status(200)
@@ -82,7 +82,7 @@ exports.login = (req, res, next) => {
           })
       );
     })
-    .catch(() => {
+    .catch((err) => {
       // res.json({
       //   meta: {
       //     message: "Đăng nhập thất bại",
