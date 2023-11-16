@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(email, password);
   let AddCookieUser;
   User.findOne({ email: email })
     .then((user) => {
@@ -28,6 +27,7 @@ exports.login = (req, res, next) => {
       return bcrypt.compare(password, user.password);
     })
     .then((account) => {
+      console.log(account);
       if (!account) {
         const error = new Error("Mật khẩu đăng nhập không đúng");
       }
