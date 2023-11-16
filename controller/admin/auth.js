@@ -27,7 +27,7 @@ exports.login = (req, res, next) => {
       return bcrypt.compare(password, user.password);
     })
     .then((account) => {
-      console.log(account);
+      // console.log(account);
       if (!account) {
         const error = new Error("Mật khẩu đăng nhập không đúng");
       }
