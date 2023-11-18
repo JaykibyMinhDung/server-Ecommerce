@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  console.log(email, password);
   let AddCookieUser;
   User.findOne({ email: email })
     .then((user) => {
@@ -28,6 +27,7 @@ exports.login = (req, res, next) => {
       return bcrypt.compare(password, user.password);
     })
     .then((account) => {
+      // console.log(account);
       if (!account) {
         const error = new Error("Mật khẩu đăng nhập không đúng");
       }
@@ -37,7 +37,8 @@ exports.login = (req, res, next) => {
         .cookie("admin_token", token, {
           maxAge: 86400 * 1000,
           httpOnly: true, // Chặn đọc cookie bên client
-          secure: process.env.NODE_ENV === "Assignment",
+          secure: true,
+          sameSite: 'None',
         })
         .status(200)
         .json({
@@ -55,14 +56,15 @@ exports.login = (req, res, next) => {
         });
     })
     .catch((err) => {
-      if (!err) {
-        return res.json({
-          meta: {
-            message: "Đăng nhập thất bại",
-            statusCode: 0,
-          },
-        });
-      }
+      // if (!err) {
+      //   return res.json({
+      //     meta: {
+      //       message: "Đăng nhập thất bại",
+      //       statusCode: 0,
+      //     },
+      //   });
+      // }
+      console.log(err);
     });
 };
 

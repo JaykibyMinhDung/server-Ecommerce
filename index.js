@@ -20,6 +20,7 @@ const chatRoutes = require("./routes/chat/chat");
 const adminRoutesAuth = require("./routes/admin/auth");
 const adminRoutesOrder = require("./routes/admin/history");
 const adminRoutesManagers = require("./routes/admin/managers");
+const adminRouteChat = require("./routes/chat/chat_admin");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -89,6 +90,7 @@ app.use(
 app.use(adminRoutesAuth);
 app.use(adminRoutesOrder);
 app.use(adminRoutesManagers);
+app.use(adminRouteChat);
 
 app.use(authRoutes);
 app.use(productRoutes);
@@ -96,7 +98,7 @@ app.use(chatRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
-  res.status(500).json({ message: "Server error", SatusCode: 500 });
+  res.status(500).json({ message: error, SatusCode: 500 });
 });
 // SET NODE_ENV=development
 

@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
   // console.log(req.headers);
   // const authHeader = req.get("Authorization");
   // const token = authHeader.split(" ")[1];
-  const nameToken = req.headers?.cookie.split(";")[0];
+  const nameToken = req.headers?.cookie;
   const [name, value] = nameToken.split("=");
   // || !authHeader
   if (!value) {

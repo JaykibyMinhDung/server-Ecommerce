@@ -61,7 +61,8 @@ exports.login = (req, res, next) => {
           .cookie("client_token", token, {
             maxAge: 86400 * 1000,
             httpOnly: true, // Chặn đọc cookie bên client
-            secure: process.env.NODE_ENV === "Assignment",
+            // sameSite: 'None',
+            secure: true,
           })
           .status(200)
           // .json([
@@ -81,13 +82,14 @@ exports.login = (req, res, next) => {
           })
       );
     })
-    .catch(() => {
-      res.json({
-        meta: {
-          message: "Đăng nhập thất bại",
-          statusCode: 0,
-        },
-      });
+    .catch((err) => {
+      // res.json({
+      //   meta: {
+      //     message: "Đăng nhập thất bại",
+      //     statusCode: 0,
+      //   },
+      // });
+      console.log(err);
     });
 };
 
