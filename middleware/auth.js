@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   // const token = authHeader.split(" ")[1];
   // const nameToken = req.headers?.cookie.split(";")[1];
   const nameToken = req.headers?.cookie;
-  // console.log(nameToken);
+  console.log(nameToken);
   const [name, value] = nameToken.split("=");
   // || !authHeader
   if (!value) {
@@ -21,9 +21,10 @@ module.exports = (req, res, next) => {
       throw Error;
     }
     req.userId = data.id;
-    
+
     next();
-  } catch {
+  } catch (err) {
+    console.log(err);
     return res
       .status(403)
       .json({ message: "Mật khẩu đăng nhập chưa đúng, vui lòng thử lại" });
