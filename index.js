@@ -1,4 +1,5 @@
 const path = require("path");
+const http = require("http");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -102,6 +103,7 @@ app.use((error, req, res, next) => {
 });
 // SET NODE_ENV=development
 const port = process.env.PORT || 5000;
+const serverSocket = http.createServer(app);
 mongoose
   .connect(url)
   .then((results) => {
@@ -109,7 +111,7 @@ mongoose
     const server = app.listen(port, () => {
       console.log(`Server running on ${port}, http://localhost:${port}`);
     });
-    const io = require("./socket").init(server);
+    const io = require("./socket").init(serverSocket);
     io.on("connection", (socket) => {
       console.log("Client connected");
     });
