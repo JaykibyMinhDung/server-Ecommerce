@@ -9,7 +9,9 @@ const multer = require("multer");
 var cors = require("cors");
 
 const app = express();
-const url = process.env.MONGODB_URI;
+const url =
+  "mongodb+srv://Userdb:SgvOBym6vNUZnBoO@atlascluster.opdyakh.mongodb.net/Assignment_3";
+// const url = process.env.MONGODB_URI;
 
 const authRoutes = require("./routes/user/auth");
 const productRoutes = require("./routes/user/products");
@@ -77,7 +79,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["http://localhost:3000", "http://localhost:3001"], // Sau phải đổi lại
     credentials: true,
     sameSite: "none",
   })
