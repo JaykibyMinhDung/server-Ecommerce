@@ -7,7 +7,7 @@ const firewall = require("../../middleware/auth");
 
 router.get("/chatrooms/getById", firewall, chatroom.getRoomChat);
 
-router.get("/chatrooms/getAllRoom", firewall, chatroom.getAllRoomChat);
+// router.get("/chatrooms/getAllRoom", firewall, chatroom.getAllRoomChat);
 
 router.post("/chatrooms/createNewRoom", firewall, chatroom.createRoomChat);
 

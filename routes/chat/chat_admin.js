@@ -9,7 +9,7 @@ router.get("/admin/chatrooms/getById", firewall, chatroom.getRoomChat);
 
 router.get("/chatrooms/getAllRoom", firewall, chatroom.getAllRoomChat);
 
-router.post("/chatrooms/createNewRoom", firewall, chatroom.createRoomChat);
+// router.post("/chatrooms/createNewRoom", firewall, chatroom.createRoomChat);
 
 router.put("/admin/chatrooms/addMessage", firewall, chatroom.addNewMessage);
 
