@@ -101,12 +101,14 @@ app.use((error, req, res, next) => {
   res.status(500).json({ message: error, SatusCode: 500 });
 });
 // SET NODE_ENV=development
-
+const port = process.env.PORT || 5000;
 mongoose
   .connect(url)
   .then((results) => {
     // const server = app.listen(process.env.PORT || 5000);
-    const server = app.listen("server-ecommerce-ivory.vercel.app" || 5000);
+    const server = app.listen(port, () => {
+      console.log(`Server running on ${port}, http://localhost:${port}`);
+    });
     const io = require("./socket").init(server);
     io.on("connection", (socket) => {
       console.log("Client connected");
