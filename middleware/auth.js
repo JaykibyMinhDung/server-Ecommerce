@@ -7,7 +7,16 @@ module.exports = (req, res, next) => {
   // const token = authHeader.split(" ")[1];
   // const nameToken = req.headers?.cookie.split(";")[1];
   const nameToken = req.headers?.cookie;
+  // const arrCookies = nameToken.split(";").find((e) => {
+  //   if (e.split("=")[0].trim() === "client_token") {
+  //     return e.split("=")[1];
+  //   }
+  // });
+  const arrCookies = nameToken
+    .split(";")
+    .find((e) => e.split("=")[0].trim() === "client_token");
   const [name, value] = nameToken.split("=");
+  console.log(arrCookies.split("=")[1]);
   // || !authHeader
   if (!value) {
     return res.status(403).json({ message: "bạn chưa đăng nhập tài khoản" });

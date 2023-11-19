@@ -7,11 +7,15 @@ module.exports = {
         origin: "*",
       },
     });
-    // io.on("connection", (socket) => {
-    //   socket.on("send_message", (param) => {
-    //     console.log("socket", param);
-    //   });
-    // });
+    io.on("connection", (socket) => {
+      console.log("Đã kết nối với socket");
+      socket.on("send_message", (param) => {
+        console.log("socket", param);
+      });
+      // socket.on("disconnect", () => {
+      //   console.log("Người dùng đã ngắt kết nối");
+      // });
+    });
     // listening for connections from clients
     // io.on("connection", (socket) => {
     //   // listening to events from client
