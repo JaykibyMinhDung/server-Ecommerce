@@ -7,7 +7,6 @@ module.exports = {
         origin: "*",
       },
     });
-    console.log("socket.js", httpServer);
     io.on("connection", (socket) => {
       console.log("Đã kết nối với socket");
       socket.on("send_message", (param) => {

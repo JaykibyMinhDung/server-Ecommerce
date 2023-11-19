@@ -104,7 +104,6 @@ app.use((error, req, res, next) => {
 // SET NODE_ENV=development
 const port = process.env.PORT || 5000;
 const serverSocket = http.createServer(app);
-console.log("index.js", serverSocket);
 mongoose
   .connect(url)
   .then((results) => {
