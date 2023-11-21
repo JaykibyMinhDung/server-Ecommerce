@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   const nameToken = req.headers?.cookie;
   const arrCookies = nameToken
     .split(";")
-    .find((e) => e.split("=")[0].trim() === "client_token");
+    .find((e) => e.split("=")[0].trim() === "admin_token");
   const [name, value] = nameToken.split("=");
   const valueCookie =
     nameToken.split(";").length > 1 ? arrCookies.split("=")[1] : value;
