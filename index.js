@@ -81,7 +81,10 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"], // Sau phải đổi lại
+    origin: [
+      "https://user-ecommerce.vercel.app",
+      "https://admin-ecommerce-vert.vercel.app",
+    ], // Sau phải đổi lại
     credentials: true,
     sameSite: "none",
   })
