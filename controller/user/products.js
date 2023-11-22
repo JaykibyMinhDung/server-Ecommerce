@@ -9,7 +9,8 @@ const transporter = nodemailer.createTransport(
   //
   sendgridTransport({
     auth: {
-      api_key: process.env.API_KEY_SENDGRID,
+      api_key:
+        "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", // process.env.API_KEY_SENDGRID,
     },
   })
 );
@@ -253,7 +254,7 @@ exports.sendMailCheckout = (req, res, next) => {
       return await transporter
         .sendMail({
           to: information_user.to,
-          from: process.env.MAIL_ADMIN, //
+          from: "dungdmfx16748@funix.edu.vn", //
           subject: "Xác nhận đặt đơn hàng",
           html:
             message +
