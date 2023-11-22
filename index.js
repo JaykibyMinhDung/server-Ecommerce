@@ -82,6 +82,7 @@ app.use((req, res, next) => {
 app.use(
   cors({
     origin: [
+      "http://localhost:3000",
       "https://user-ecommerce.vercel.app",
       "https://admin-ecommerce-vert.vercel.app",
     ], // Sau phải đổi lại

@@ -4,7 +4,7 @@
   "description": "server asm 3",
   "main": "index.js",
   "engines": {
-    "node": "18.x"
+    "node": ">=18.18.0 <19.0.0"
   },
   "scripts": {
     "start:dev": "nodemon index.js",
