@@ -94,7 +94,7 @@ exports.addNewMessage = (req, res, next) => {
     .then((newChat) => {
       io.getIO().on("connection", (socket) => {
         socket.on("send_message", async (param, callback) => {
-          console.log(param); // world
+          console.log(param); // tin nhắn
           try {
             callback({
               status: "OK",

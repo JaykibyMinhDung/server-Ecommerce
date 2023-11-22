@@ -10,7 +10,8 @@ const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
       api_key:
-        "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",
+        "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",
+      // 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
     },
   })
 );
@@ -277,6 +278,7 @@ exports.sendMailCheckout = (req, res, next) => {
         });
     })
     .catch((err) => {
+      console.log(err);
       res.json({
         meta: {
           message:
