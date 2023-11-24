@@ -4,6 +4,7 @@ exports.getAllHistory = (req, res, next) => {
   Order.find()
     .then((history) => {
       const transactionHistory = history.map((order) => {
+        console.log(order._doc.cart.length);
         const totalPrice = order._doc.cart.reduce((pre, after) => {
           return (
             pre.priceProduct * Number(pre.count) +
@@ -27,6 +28,7 @@ exports.getAllHistory = (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       return res.json({
         meta: {
           message: "Nhận dữ liệu không thành công",
