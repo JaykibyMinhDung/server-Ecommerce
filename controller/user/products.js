@@ -139,6 +139,89 @@ exports.addToCart = (req, res, next) => {
     });
 };
 
+exports.updatedCart = (req, res, next) => {
+  const cart = req.query;
+  // console.log(cart);
+  const idProductOrder = new mongoose.Types.ObjectId(cart.idProduct);
+  // Users.find({
+  //   _id: cart.idUser,
+  //   "order.idProduct": idProductOrder,
+  // })
+  Users.findById(cart.idUser)
+    .then((user) => {
+      for (const iterator of user.order) {
+        const findId = iterator.idProduct.toString() === cart.idProduct;
+        if (findId) {
+          iterator.count = cart.count;
+          return user.save();
+        }
+      }
+    })
+    .then((results) => {
+      console.log(results);
+    })
+    // Users.findByIdAndUpdate(
+    //   {
+    //     _id: cart.idUser,
+    //     "order.nameProduct": "Apple Watch Series 7 41mm GPS Sport Band",
+    //   },
+    //   { $set: { "order.$.count": cart.count } }
+    // )
+    //   .then((user) => {
+    //     Products.findById(cart.idProduct)
+    //       .then((product) => {
+    //         if (product?.amount < cart?.count) {
+    //           return res.json({
+    //             meta: {
+    //               message:
+    //                 "Số lượng hàng đã hết hoặc có ít hơn số lượng đặt, vui lòng mua sản phẩm khác",
+    //               statuscode: 0,
+    //             },
+    //           });
+    //         }
+    //         // const configKeyProducts = () => {
+    //         //   return {
+    //         //     img: product.image[0],
+    //         //     idProduct: product._id,
+    //         //     nameProduct: product.name,
+    //         //     priceProduct: product.price,
+    //         //     idUser: cart.idUser,
+    //         //     count: cart.count,
+    //         //   };
+    //         // };
+    //         // return user.updateOne(
+    //         //   { id: cart.idUser },
+    //         //   { order: { ...user.order, count: cart.count } }
+    //         // );
+    //         // product.amount = product.amount - 1;
+    //         // const updatedCount = (user.order.find((e) => {
+    //         //   return e.idProduct.toString() === cart.idProduct;
+    //         // }).count = 0); // cart.count
+    //         // updatedCount;
+    //         // product.save();
+    //         return user.save();
+    //       })
+    //       .then((sucessful) => {
+    //         console.log(sucessful);
+    //         return res.json({
+    //           meta: {
+    //             message: "Bạn đã cập nhật hàng thành công",
+    //             statuscode: 1,
+    //           },
+    //         });
+    //       });
+    //   })
+    .catch((err) => {
+      console.log(err);
+      return res.json({
+        meta: {
+          message: "Cập nhật hàng chưa thành công",
+          statuscode: 0,
+        },
+      });
+    });
+};
+
 exports.getCartUser = (req, res, next) => {
   const idUser = req.query.idUser;
   Users.findById(idUser)

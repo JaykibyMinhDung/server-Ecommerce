@@ -4,13 +4,11 @@ exports.getAllHistory = (req, res, next) => {
   Order.find()
     .then((history) => {
       const transactionHistory = history.map((order) => {
-        console.log(order._doc.cart.length);
+        console.log("history");
         const totalPrice = order._doc.cart.reduce((pre, after) => {
-          return (
-            pre.priceProduct * Number(pre.count) +
-            after.priceProduct * Number(after.count)
-          );
-        });
+          return pre + after.priceProduct * Number(after.count);
+        }, 0);
+        console.log(totalPrice);
         return {
           ...order._doc,
           total: totalPrice,

@@ -18,6 +18,8 @@ router.get("/carts", firewall, product.getCartUser);
 
 router.post("/carts/add", firewall, product.addToCart);
 
+router.put("/carts/updated", firewall, product.updatedCart);
+
 router.delete("/carts/delete", firewall, product.deleteCartUser);
 
 // mail

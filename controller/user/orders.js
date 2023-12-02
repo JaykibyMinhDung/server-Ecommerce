@@ -8,11 +8,10 @@ exports.historyOrder = (req, res, next) => {
     .then(async (order) => {
       const purchaseHistory = order.map((e) => {
         const totalPrice = e.cart.reduce((pre, after) => {
-          return (
-            pre.priceProduct * Number(pre.count) +
-            after.priceProduct * Number(after.count)
-          );
-        });
+          console.log(pre, after);
+          return pre + after.priceProduct * Number(after.count);
+        }, 0);
+        // console.log(totalPrice);
         return {
           ...e._doc,
           total: totalPrice,
