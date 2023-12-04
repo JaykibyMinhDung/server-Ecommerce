@@ -264,11 +264,8 @@ exports.sendMailCheckout = (req, res, next) => {
       });
       await order.save();
       const totalBill = await user.order.reduce((pre, after) => {
-        return (
-          pre.priceProduct * Number(pre.count) +
-          after.priceProduct * Number(after.count)
-        );
-      });
+        return pre + after.priceProduct * Number(after.count);
+      }, 0);
       let message = `
       <h2>Xin chào ${information_user.fullname}</h2>
       <p>Phone: ${information_user.phone}</p>
