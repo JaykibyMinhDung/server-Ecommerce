@@ -38,7 +38,7 @@ exports.login = (req, res, next) => {
           maxAge: 86400 * 1000,
           httpOnly: true, // Chặn đọc cookie bên client
           secure: true,
-          sameSite: 'None',
+          sameSite: "None",
         })
         .status(200)
         .json({
@@ -82,20 +82,21 @@ exports.getAllUser = (req, res, next) => {
         },
       });
     })
-    .catch(() => {
-      res.json({
-        meta: {
-          message: "Nhận dữ liệu thất bại",
-          statusCode: 0,
-        },
-      });
+    .catch((err) => {
+      console.log(err);
+      // res.json({
+      //   meta: {
+      //     message: "Nhận dữ liệu thất bại",
+      //     statusCode: 0,
+      //   },
+      // });
     });
 };
 
 exports.logout = (req, res, next) => {
   return res
     .status(200)
-    .clearCookie("admin_token")
+    .clearCookie("admin_token", { path: "/" })
     .json({
       meta: { message: "Tài khoản đã đăng xuất", statusCode: 1 },
     });

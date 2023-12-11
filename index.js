@@ -85,6 +85,7 @@ app.use(
     origin: [
       "https://user-ecommerce.vercel.app",
       "https://admin-ecommerce-vert.vercel.app",
+      "http://localhost:3000",
     ], // Sau phải đổi lại
     credentials: true,
     sameSite: "none",

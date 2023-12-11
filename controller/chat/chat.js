@@ -98,7 +98,7 @@ exports.addNewMessage = (req, res, next) => {
           try {
             callback({
               status: "OK",
-              param,
+              // param,
             });
           } catch (e) {
             callback({
